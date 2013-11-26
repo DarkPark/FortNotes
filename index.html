@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Fortnotes by DarkPark</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Fortnotes</h1>
+        <p>FortNotes is a highly secure online private information manager based on the AES encryption in the browser.</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/DarkPark/FortNotes" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/DarkPark/FortNotes/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/DarkPark/FortNotes/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a name="fortnotes" class="anchor" href="#fortnotes"><span class="octicon octicon-link"></span></a>FortNotes</h1>
+
+<p>FortNotes is a highly secure online private information manager based on the AES encryption in the browser.
+The current stable version - <a href="https://bitbucket.org/DarkPark/fortnotes">https://bitbucket.org/DarkPark/fortnotes</a></p>
+
+<h2>
+<a name="deployment" class="anchor" href="#deployment"><span class="octicon octicon-link"></span></a>Deployment</h2>
+
+<p>Dependencies:</p>
+
+<ul>
+<li><a href="http://nodejs.org/">NodeJS</a></li>
+<li><a href="https://npmjs.org/">Node Packaged Modules</a></li>
+<li><a href="http://www.mongodb.org/">MongoDB</a></li>
+</ul><p>Install command (for Ubuntu): <code>sudo apt-get install nodejs npm mongodb</code>.</p>
+
+<p>Download and install the project files: <code>npm install fortnotes</code>.</p>
+
+<p>Run the server with <code>npm start</code> or <code>node server/main.js</code>.
+Now the web client is accessible in a web browser <a href="http://localhost:8080/client/">http://localhost:8080/client/</a>.</p>
+
+<h2>
+<a name="development" class="anchor" href="#development"><span class="octicon octicon-link"></span></a>Development</h2>
+
+<p><code>sudo npm install -g grunt-cli</code></p>
+
+<p>fortnotes.com/client/
+fortnotes.com/sync/
+fortnotes.com/api/</p>
+
+<p>app.fortnotes.com
+api.fortnotes.com</p>
+
+<h2>
+<a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API</h2>
+
+<p>Requests:</p>
+
+<table>
+<thead><tr>
+<th align="center">Method</th>
+<th align="left">Url</th>
+<th align="left">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="center">GET</td>
+<td align="left">/api/v1/auth/<strong>name</strong>
+</td>
+<td align="left">return user ip and pass salt for hash generation</td>
+</tr>
+<tr>
+<td align="center">POST</td>
+<td align="left">/api/v1/auth/<strong>name</strong>/<strong>pass</strong>
+</td>
+<td align="left">return api key (base64 encoded 64 bytes string) of the created session</td>
+</tr>
+<tr>
+<td align="center">GET</td>
+<td align="left">/api/v1/sessions?limit=20&amp;skip=0</td>
+<td align="left">return a list of user's sessions</td>
+</tr>
+<tr>
+<td align="center">GET</td>
+<td align="left">/api/v1/sessions/<strong>key</strong>
+</td>
+<td align="left">return a session info by the given api key</td>
+</tr>
+<tr>
+<td align="center">HEAD</td>
+<td align="left">/api/v1/notes</td>
+<td align="left">return all notes general info</td>
+</tr>
+<tr>
+<td align="center">GET</td>
+<td align="left">/api/v1/notes</td>
+<td align="left">return a list of last 20 records</td>
+</tr>
+<tr>
+<td align="center">GET</td>
+<td align="left">/api/v1/notes?limit=20&amp;skip=0</td>
+<td align="left">return a custom list of records</td>
+</tr>
+<tr>
+<td align="center">POST</td>
+<td align="left">/api/v1/notes</td>
+<td align="left">submit fields for creating a new note</td>
+</tr>
+<tr>
+<td align="center">HEAD</td>
+<td align="left">/api/v1/tags</td>
+<td align="left">return all tags general info</td>
+</tr>
+<tr>
+<td align="center">GET</td>
+<td align="left">/api/v1/tags</td>
+<td align="left">return a list of last 20 records</td>
+</tr>
+<tr>
+<td align="center">GET</td>
+<td align="left">/api/v1/tags?limit=20&amp;skip=0</td>
+<td align="left">return a custom list of records</td>
+</tr>
+<tr>
+<td align="center">POST</td>
+<td align="left">/api/v1/tags</td>
+<td align="left">submit fields for creating a new tag</td>
+</tr>
+</tbody>
+</table><p>Response codes:</p>
+
+<table>
+<thead><tr>
+<th align="center">Code</th>
+<th align="left">Meaning</th>
+<th align="left">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="left">ok</td>
+<td align="left">successful call</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">wrong API version</td>
+<td align="left">probably too old api version</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">wrong API context</td>
+<td align="left">url entity part is wrong - /api/v1/<strong>invalid</strong>
+</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="left">wrong API method</td>
+<td align="left">the corresponding entity doesn't have this method (GET/POST...)</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="left">wrong auth data</td>
+<td align="left">invalid user name, password or api key</td>
+</tr>
+</tbody>
+</table><h3>
+<a name="authentication" class="anchor" href="#authentication"><span class="octicon octicon-link"></span></a>Authentication</h3>
+
+<p>Two-steps algorithm:</p>
+
+<ul>
+<li>/api/v1/auth/name</li>
+<li>/api/v1/auth/name/pass</li>
+</ul><h3>
+<a name="client-side-data" class="anchor" href="#client-side-data"><span class="octicon octicon-link"></span></a>Client-side data</h3>
+
+<p>There are some stored parameters in the browser localStorage:</p>
+
+<table>
+<thead><tr>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="left">config.auth.key</td>
+<td align="left">api key for authentication (base64 encoded 64 bytes string)</td>
+</tr>
+<tr>
+<td align="left">config.sjcl</td>
+<td align="left">encrypt/decrypt user-specific parameters</td>
+</tr>
+</tbody>
+</table>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/DarkPark">DarkPark</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
